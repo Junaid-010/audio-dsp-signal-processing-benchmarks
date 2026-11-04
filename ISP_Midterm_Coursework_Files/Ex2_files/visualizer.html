@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISP Ex2: Visualizer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+  <script src="https://unpkg.com/meyda/dist/web/meyda.min.js"></script>
+  <script src="visualizer.js"></script>
+  <style>
+    body { background: #111; color: white; font-family: sans-serif; text-align: center; }
+    #canvas-container { border: 1px solid #333; margin: 10px auto; display: inline-block; }
+    .controls { margin-bottom: 15px; }
+    button { padding: 8px 15px; background: #333; color: white; border: 1px solid #555; cursor: pointer; }
+    button:hover { background: #00bcd4; color: black; }
+    .active { background: #00bcd4; color: black; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Meyda Audio Visualizer</h2>
+  
+  <div class="controls">
+    <button onclick="changeTrack(0)" id="btn0">Sound 1 (Bass)</button>
+    <button onclick="changeTrack(1)" id="btn1">Sound 2 (High)</button>
+    <button onclick="changeTrack(2)" id="btn2">Sound 3 (Noise)</button>
+    <button onclick="changeTrack(3)" id="btn3">Full Remix (Voice Control)</button>
+  </div>
+
+  <div id="canvas-container"></div>
+  <p id="status">Status: Select a track to play</p>
+</body>
+</html>

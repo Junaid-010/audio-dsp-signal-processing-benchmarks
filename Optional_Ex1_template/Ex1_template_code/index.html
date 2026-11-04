@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ISP Audio Workstation</title>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+
+  <style>
+    /* Dark Theme Styles */
+    body { background: #222; color: #fff; font-family: sans-serif; padding: 20px; }
+    h1 { border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 0; }
+
+    /* FLEX CONTAINER */
+    .main-layout {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    /* 1. NEW LIBRARY STYLES  */
+    .library-panel {
+        background: #2a2a2a;
+        border: 1px solid #444;
+        border-radius: 5px;
+        padding: 10px;
+        width: 180px; 
+        min-height: 400px;
+    }
+    .library-panel h3 { margin-top: 0; color: #ff9800; border-bottom: 1px solid #555; font-size: 14px; }
+    
+    .lib-btn {
+        width: 100%;
+        background: #444;
+        color: white;
+        border: 1px solid #555;
+        padding: 8px;
+        margin-bottom: 5px;
+        text-align: left;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    .lib-btn:hover { background: #ff9800; color: black; }
+    .lib-btn.active { background: #ff9800; color: black; font-weight: bold; }
+
+    /*  2. EXISTING WORKSPACE STYLES  */
+    .workspace { flex-grow: 1; }
+
+    #canvas-container { 
+        margin-bottom: 20px; 
+        border: 2px solid #555; 
+        box-shadow: 0 0 10px black;
+        background: black;
+    }
+
+    .transport-bar { margin-bottom: 15px; }
+    .btn { background: #555; color: white; border: none; padding: 10px 20px; margin-right: 5px; cursor: pointer; }
+    .btn:hover { background: #00bcd4; }
+    .btn-record.recording { background: red; animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0.5; } }
+
+    /* The Rack Grid */
+    .rack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .module {
+        background: #333;
+        border: 1px solid #444;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .module h3 { margin-top: 0; color: #00bcd4; font-size: 14px; }
+    
+    .control-group { margin-bottom: 10px; display: flex; flex-direction: column; }
+    label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+    input[type=range] { width: 100%; cursor: pointer; }
+  </style>
+</head>
+
+<body>
+  <h1>Audio Effects Processor</h1>
+
+  <div class="main-layout">
+    
+    <div class="library-panel">
+        <h3>Sound Library</h3>
+        <div id="library-list"></div>
+    </div>
+
+    <div class="workspace">
+        <div id="canvas-container"></div>
+        
+        <div class="transport-bar">
+            <span id="btn-play"></span>
+            <span id="btn-stop"></span>
+            <span id="btn-record"></span>
+        </div>
+
+        <div class="rack">
+            <div class="module" id="box-lowpass"><h3>Low Pass Filter</h3></div>
+            <div class="module" id="box-distortion"><h3>Distortion</h3></div>
+            <div class="module" id="box-compressor"><h3>Dynamic Compressor</h3></div>
+            <div class="module" id="box-reverb"><h3>Reverb</h3></div>
+            <div class="module" id="box-master"><h3>Master Volume</h3></div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

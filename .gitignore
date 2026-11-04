@@ -1,0 +1,16 @@
+# Operating System & IDE
+.DS_Store
+.vscode/
+
+# Coursework reports, PDFs, docs, and screen recordings
+*.pdf
+*.docx
+*.doc
+*.zip
+*.mp4
+*.mov
+
+# Python / Jupyter artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

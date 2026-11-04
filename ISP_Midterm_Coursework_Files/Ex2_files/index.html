@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISP Ex2: Audio Captcha</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/IDMNYU/p5.js-speech@0.0.3/lib/p5.speech.js"></script>
+  
+  <script src="sketch.js"></script>
+
+  <style>
+    body { 
+        background-color: #f4f4f4; 
+        font-family: Arial, sans-serif; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        margin: 0;
+    }
+    
+    .captcha-container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 350px;
+    }
+
+    h2 { color: #333; margin-top: 0; }
+    
+    .visuals {
+        background: #222;
+        height: 100px;
+        width: 100%;
+        margin: 15px 0;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+    }
+    button:hover { background: #0056b3; }
+
+    .status {
+        margin-top: 15px;
+        font-weight: bold;
+        min-height: 20px;
+    }
+    .status.success { color: green; }
+    .status.fail { color: red; }
+    
+    .controls { margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+
+  <div class="captcha-container">
+    <h2>Audio Captcha</h2>
+    <p>Listen to the audio and type the characters.</p>
+    
+    <div id="canvas-target" class="visuals"></div>
+
+    <div class="controls">
+        <button onclick="playCaptcha()">▶ Play Audio</button>
+        <button onclick="generateCaptcha()">↻ Refresh</button>
+    </div>
+
+    <input type="text" id="userInput" placeholder="Type answer here...">
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div id="resultMsg" class="status"></div>
+  </div>
+
+</body>
+</html>
